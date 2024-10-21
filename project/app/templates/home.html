@@ -1,11 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        #clr {
+            background-color: chocolate;
+            color: white;
+            font-weight: bold;
+        }
+
+        #clr2 {
+            background-color: cadetblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* ------------------footer----------------------- */
+        ul {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .footer-section {
+            background: #151414;
+            position: relative;
+        }
+
+        .footer-cta {
+            border-bottom: 1px solid #373636;
+        }
+
+        .single-cta i {
+            color: #ff5e14;
+            font-size: 30px;
+            float: left;
+            margin-top: 8px;
+        }
+
+        .cta-text {
+            padding-left: 15px;
+            display: inline-block;
+        }
+
+        .cta-text h4 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .cta-text span {
+            color: #757575;
+            font-size: 15px;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-pattern img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 330px;
+            background-size: cover;
+            background-position: 100% 100%;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            max-width: 200px;
+        }
+
+        .footer-text p {
+            margin-bottom: 14px;
+            font-size: 14px;
+            color: #7e7e7e;
+            line-height: 28px;
+        }
+
+        .footer-social-icon span {
+            color: #fff;
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .footer-social-icon a {
+            color: #fff;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .footer-social-icon i {
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            line-height: 38px;
+            border-radius: 50%;
+        }
+
+        .facebook-bg {
+            background: #3B5998;
+        }
+
+        .twitter-bg {
+            background: #55ACEE;
+        }
+
+        .google-bg {
+            background: #DD4B39;
+        }
+
+        .footer-widget-heading h3 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .footer-widget-heading h3::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            height: 2px;
+            width: 50px;
+            background: #ff5e14;
+        }
+
+        .footer-widget ul li {
+            display: inline-block;
+            float: left;
+            width: 50%;
+            margin-bottom: 12px;
+        }
+
+        .footer-widget ul li a:hover {
+            color: #ff5e14;
+        }
+
+        .footer-widget ul li a {
+            color: #878787;
+            text-transform: capitalize;
+        }
+
+        .subscribe-form {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subscribe-form input {
+            width: 100%;
+            padding: 14px 28px;
+            background: #2E2E2E;
+            border: 1px solid #2E2E2E;
+            color: #fff;
+        }
+
+        .subscribe-form button {
+            position: absolute;
+            right: 0;
+            background: #ff5e14;
+            padding: 13px 20px;
+            border: 1px solid #ff5e14;
+            top: 0;
+        }
+
+        .subscribe-form button i {
+            color: #fff;
+            font-size: 22px;
+            transform: rotate(-6deg);
+        }
+
+        .copyright-area {
+            background: #202020;
+            padding: 25px 0;
+        }
+
+        .copyright-text p {
+            margin: 0;
+            font-size: 14px;
+            color: #878787;
+        }
+
+        .copyright-text p a {
+            color: #ff5e14;
+        }
+
+        .footer-menu li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .footer-menu li:hover a {
+            color: #ff5e14;
+        }
+
+        .footer-menu li a {
+            font-size: 14px;
+            color: #878787;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Home</h1>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand" style="font-weight: bold;color: white;">Welcome {{user.fnm}}</div>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href=" #">Your Bookings </a></li>
+                    <!-- <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li> -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="  #"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <center style="font-size: 40px;font-weight: bold;">Book Your Appointment</center><br><br>
+    <!---------------------------------------Cart ---------------------------------- -->
+    <div class="container-fluid bg-3 ">
+        <div class="row">
+
+            <div class="col-sm-3">
+                <img src="https://plus.unsplash.com/premium_photo-1658506671316-0b293df7c72b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZG9jdG9yfGVufDB8fDB8fHww"
+                    class="img-responsive" style="width:100%" alt="Image">
+                <form action="{% url 'formdata' %}" method="post">
+                    {% csrf_token %}
+                    <h4 style="color: black;font-weight: bold;">Dr. Lokesh Handa</h4>
+                    <h5 style="color: black;font-weight: bold;">Cosmetic/Plastic Surgeon - 14 Year Exp.</h5>
+                    <h5 style="color: black;font-weight: bold;">&#8377;1000</h5>
+                    <input type="text" value="Dr. Lokesh Handa" hidden name="doctor">
+                    <input type="text" value="1000" hidden name="amount">
+                    <input type="text" value="Cosmetic/Plastic Surgeon" hidden name="treat">
+                    <input type="text" value="{{user.fnm}} " hidden name="fnm">
+                    <input type="text" value="{{user.lnm}}" hidden name="lnm">
+                    <input type="text" value="{{user.em}}" hidden name="em">
+                    <!-- <button type="submit" class="btn btn-primary">Select</button> -->
+                    <button type="submit" class="btn btn-primary">Click Here</button>
+                    <hr>
+                </form>
+            </div>
+            <div class="col-sm-3">
+                <img src="https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843"
+                    class="img-responsive" style="width:100%" alt="Image">
+                <form action="{% url 'formdata' %}" method="post">
+                    {% csrf_token %}
+                    <h4 style="color: black;font-weight: bold;">Dr. Aditya Aggarwal</h4>
+                    <h5 style="color: black;font-weight: bold;">Homeopathy Doctor - 24 Year Exp.</h5>
+                    <h5 style="color: black;font-weight: bold;">&#8377;2000</h5>
+                    <input type="text" value="Dr. Aditya Aggarwal" hidden name="doctor">
+                    <input type="text" value="2000" hidden name="amount">
+                    <input type="text" value="Homeopathy Doctor" hidden name="treat">
+                    <input type="text" value="{{user.fnm}} " hidden name="fnm">
+                    <input type="text" value="{{user.lnm}}" hidden name="lnm">
+                    <input type="text" value="{{user.em}}" hidden name="em">
+                    <!-- <button type="submit" class="btn btn-primary">Select</button> -->
+                    <button type="submit" class="btn btn-primary">Click Here</button>
+                    <hr>
+                </form>
+            </div>
+            <div class="col-sm-3">
+                <img src="https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg"
+                    class="img-responsive" style="width:100%" alt="Image">
+                <form action="{% url 'formdata' %}" method="post">
+                    {% csrf_token %}
+                    <h4 style="color: black;font-weight: bold;">Dr. Sunakshi Singh</h4>
+                    <h5 style="color: black;font-weight: bold;">Dermatologist - 15 Year Exp.</h5>
+                    <h5 style="color: black;font-weight: bold;">&#8377;1840</h5>
+                    <input type="text" value="Dr. Sunakshi Singh" hidden name="doctor">
+                    <input type="text" value="1840" hidden name="amount">
+                    <input type="text" value="Dermatologist" hidden name="treat">
+                    <input type="text" value="{{user.fnm}} " hidden name="fnm">
+                    <input type="text" value="{{user.lnm}}" hidden name="lnm">
+                    <input type="text" value="{{user.em}}" hidden name="em">
+                    <!-- <button type="submit" class="btn btn-primary">Select</button> -->
+                    <button type="submit" class="btn btn-primary">Click Here</button>
+                    <hr>
+                </form>
+            </div>
+            <div class="col-sm-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyBLl79any2k4WvbPmYb5FZ-AiSRsT9P7jp5rQ1u8K5j-vVhF5DvdLkLyjv6GeFfmyMg&usqp=CAU"
+                    class="img-responsive" style="width:100%" alt="Image">
+
+
+                <form action="{% url 'formdata' %}" method="post">
+                    {% csrf_token %}
+                    <h4 style="color: black;font-weight: bold;">Dr. Kuldip Singh</h4>
+                    <h5 style="color: black;font-weight: bold;">General Surgeon • 22 Years Exp.</h5>
+                    <h5 style="color: black;font-weight: bold;">&#8377;1909</h5>
+                    <input type="text" value="Dr. Kuldip Singh" hidden name="doctor">
+                    <input type="text" value="1909" hidden name="amount">
+                    <input type="text" value="General Surgeon" hidden name="treat">
+                    <input type="text" value="{{user.fnm}} " hidden name="fnm">
+                    <input type="text" value="{{user.lnm}}" hidden name="lnm">
+                    <input type="text" value="{{user.em}}" hidden name="em">
+                    <!-- <button type="submit" class="btn btn-primary">Select</button> -->
+                    <button type="submit" class="btn btn-primary">Click Here</button>
+                    <hr>
+                </form>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="container-fluid bg-3 ">
+        <div class="row">
+            <div class="col-sm-3">
+                <img src=" https://w0.peakpx.com/wallpaper/7/165/HD-wallpaper-male-doctor-in-the-hospital-by-the-window.jpg"
+                    class="img-responsive" style="width:100%" alt="Image">
+
+                <form action="{% url 'formdata' %}" method="post">
+                    {% csrf_token %}
+                    <h4 style="color: black;font-weight: bold;">Dr Shambhav Chandra</h4>
+                    <h5 style="color: black;font-weight: bold;">Dermatologist - 15 Years Exp.</h5>
+                    <h5 style="color: black;font-weight: bold;">&#8377;2498</h5>
+                    <input type="text" value="Dr Shambhav Chandra" hidden name="doctor">
+                    <input type="text" value="2498" hidden name="amount">
+                    <input type="text" value="Dermatologist" hidden name="treat">
+                    <input type="text" value="{{user.fnm}} " hidden name="fnm">
+                    <input type="text" value="{{user.lnm}}" hidden name="lnm">
+                    <input type="text" value="{{user.em}}" hidden name="em">
+                    <!-- <button type="submit" class="btn btn-primary">Select</button> -->
+                    <button type="submit" class="btn btn-primary">Click Here</button>
+                    <hr>
+                </form>
+            </div>
+            <div class="col-sm-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ov9l5NZE2OSpvA2KODlZc7DeffEB2x7YZw&s"
+                    class="img-responsive" style="width:100%" alt="Image">
+                <form action="{% url 'formdata' %}" method="post">
+                    {% csrf_token %}
+                    <h4 style="color: black;font-weight: bold;">Dr. Nidhi Jain</h4>
+                    <h5 style="color: black;font-weight: bold;">Orthopedic Doctor - 12 Years Exp.</h5>
+                    <h5 style="color: black;font-weight: bold;">&#8377;2509</h5>
+                    <input type="text" value="Dr. Nidhi Jain" hidden name="doctor">
+                    <input type="text" value="2509" hidden name="amount">
+                    <input type="text" value="Orthopedic Doctor" hidden name="treat">
+                    <input type="text" value="{{user.fnm}} " hidden name="fnm">
+                    <input type="text" value="{{user.lnm}}" hidden name="lnm">
+                    <input type="text" value="{{user.em}}" hidden name="em">
+                    <!-- <button type="submit" class="btn btn-primary">Select</button> -->
+                    <button type="submit" class="btn btn-primary">Click Here</button>
+                    <hr>
+                </form>
+            </div>
+            <div class="col-sm-3">
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwGtV_87jt8s3zoIgWZc7FAWTyDaVb_Dbwkw&s"
+                    class="img-responsive" style="width:100%" alt="Image">
+
+                <form action="{% url 'formdata' %}" method="post">
+                    {% csrf_token %}
+                    <h4 style="color: black;font-weight: bold;">Dr. Amit Solanki</h4>
+                    <h5 style="color: black;font-weight: bold;">Ophthalmologist - 20 Years Exp.</h5>
+                    <h5 style="color: black;font-weight: bold;">&#8377;1598</h5>
+                    <input type="text" value="Dr. Amit Solanki" hidden name="doctor">
+                    <input type="text" value="1598" hidden name="amount">
+                    <input type="text" value="Ophthalmologist" hidden name="treat">
+                    <input type="text" value="{{user.fnm}} " hidden name="fnm">
+                    <input type="text" value="{{user.lnm}}" hidden name="lnm">
+                    <input type="text" value="{{user.em}}" hidden name="em">
+                    <!-- <button type="submit" class="btn btn-primary">Select</button> -->
+                    <button type="submit" class="btn btn-primary">Click Here</button>
+                    <hr>
+                </form>
+            </div>
+            <div class="col-sm-3">
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0q-i41TQyw_vgvkZsX0yqcEWU4X3kKwaorQ&s"
+                    class="img-responsive" style="width:100%" alt="Image">
+                <form action="{% url 'formdata' %}" method="post">
+                    {% csrf_token %}
+                    <h4 style="color: black;font-weight: bold;">Dr. Sudhir Badlani</h4>
+                    <h5 style="color: black;font-weight: bold;">Dentist - 13 Years Exp.</h5>
+                    <h5 style="color: black;font-weight: bold;">&#8377;1888</h5>
+                    <input type="text" value="Dr. Sudhir Badlani" hidden name="doctor">
+                    <input type="text" value="1888" hidden name="amount">
+                    <input type="text" value="Dentist" hidden name="treat">
+                    <input type="text" value="{{user.fnm}} " hidden name="fnm">
+                    <input type="text" value="{{user.lnm}}" hidden name="lnm">
+                    <input type="text" value="{{user.em}}" hidden name="em">
+                    <!-- <button type="submit" class="btn btn-primary">Select</button> -->
+                    <button type="submit" class="btn btn-primary">Click Here</button>
+                    <hr>
+                </form>
+            </div>
+        </div>
+    </div><br><br>
+
+
+
+
+    <!-- -------------------------------------footer------------------------------------------------------------ -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Find us</h4>
+                                <span>1010 Avenue, sw 54321, chandigarh</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span>9876543210 0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>mail@info.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="https://i.ibb.co/QDy827D/ak-logo.png" class="img-fluid"
+                                        alt="logo"></a>
+                            </div>
+                            <div class="footer-text">
+                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor
+                                    incididuntut consec tetur adipisicing
+                                    elit,Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Useful Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">about</a></li>
+                                <li><a href="#">services</a></li>
+                                <li><a href="#">portfolio</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Latest News</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2018, All Right Reserved <a
+                                    href="https://codepen.io/anupkumar92/">Anup</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Terms</a></li>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Policy</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>

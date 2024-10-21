@@ -48,3 +48,23 @@ def login(request):
     return render(request,'login.html')
 def home(request):
     return render(request,'home.html')
+        
+def formdata(request):
+    if request.method=='POST':
+        doctor=request.POST.get('doctor')
+        amount=request.POST.get('amount')
+        treat=request.POST.get('treat')
+        fnm=request.POST.get('fnm')
+        lnm=request.POST.get('lnm')
+        em=request.POST.get('em')
+        data={
+            'doctor':doctor,
+            'amount':amount,
+            'treat':treat,
+            'fnm':fnm,
+            'lnm':lnm,
+            'em':em,
+        }
+        return render(request,'formdata.html',{'user':data})
+    else:
+        return render(request,'home.html')
