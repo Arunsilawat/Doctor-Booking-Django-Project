@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from.models import Userdata
+from.models import Book_data
 # Create your views here.
 
 def register(request):
@@ -46,8 +47,19 @@ def login(request):
             msg="Email Id Not Registered"
             return render(request,'login.html',{'msg':msg})
     return render(request,'login.html')
-def home(request):
-    return render(request,'home.html')
+def home(request,em):
+    admindata=Userdata.objects.get(email=em)
+    fname=admindata.fname
+    lname=admindata.lname
+    email=admindata.email
+    password=admindata.password
+    user={
+        'fnm':fname,
+        'lnm':lname,
+        'em':email,
+        'pass':password
+        }
+    return render(request,'home.html',{'user':user})
         
 def formdata(request):
     if request.method=='POST':
@@ -68,3 +80,122 @@ def formdata(request):
         return render(request,'formdata.html',{'user':data})
     else:
         return render(request,'home.html')
+
+def datadisplay(request):
+    if request.method=='POST':
+        fname=request.POST.get('fnm')
+        lname=request.POST.get('lnm')
+        email=request.POST.get('em')
+        doctor=request.POST.get('doctor')
+        amount=request.POST.get('amount')
+        address=request.POST.get('address')
+        contact=request.POST.get('contact')
+        treat=request.POST.get('treat')
+        date=request.POST.get('date')
+        Book_data.objects.create(fname=fname,lname=lname,email=email,doctor=doctor,amount=amount,address=address,contact=contact,treat=treat,date=date)
+        data=Book_data.objects.filter(email=email).values()
+
+        admindata=Userdata.objects.get(email=email)
+        fname=admindata.fname
+        lname=admindata.lname
+        email=admindata.email
+        password=admindata.password
+        user={
+            'fnm':fname,
+            'lnm':lname,
+            'em':email,
+            'pass':password
+            }
+        return render(request,'datadisplay.html',{'data':data,'user':user})
+    else:
+        return render(request,'formdata.html')
+
+def delete(request,pk,em):
+    user=Book_data.objects.filter(id=pk)
+    if user:
+        user=Book_data.objects.get(id=pk)
+        email=user.email
+        user.delete()
+        data=Book_data.objects.filter(email=email)
+
+        admindata=Userdata.objects.get(email=email)
+        fname=admindata.fname
+        lname=admindata.lname
+        email=admindata.email
+        password=admindata.password
+        user={
+            'fnm':fname,
+            'lnm':lname,
+            'em':email,
+            'pass':password
+            }
+        return render(request,'datadisplay.html',{'data':data,'user':user})
+    else:
+        data=Book_data.objects.filter(email=em)
+
+        admindata=Userdata.objects.get(email=em)
+        fname=admindata.fname
+        lname=admindata.lname
+        email=admindata.email
+        password=admindata.password
+        user={
+            'fnm':fname,
+            'lnm':lname,
+            'em':email,
+            'pass':password
+            }
+        return render(request,'datadisplay.html',{'data':data,'user':user})
+def edit(request,pk):
+    data=Book_data.objects.get(id=pk)
+    myid=data.id
+    email=data.email
+    address=data.address
+    date=data.date
+    contact=data.contact 
+    edit_data={
+        'myid':myid,
+        'address':address,
+        'date':date,
+        'contact':contact,
+    }
+    alldata=Book_data.objects.filter(email=email)
+
+    admindata=Userdata.objects.get(email=email)
+    fname=admindata.fname
+    lname=admindata.lname
+    email=admindata.email
+    password=admindata.password
+    user={
+        'fnm':fname,
+        'lnm':lname,
+        'em':email,
+        'pass':password
+        }
+    return render(request,'datadisplay.html',{'data':alldata,'key2':edit_data,'user':user})
+def save(request,pk):
+    if request.method=='POST':
+        address=request.POST.get('address')
+        date=request.POST.get('date')
+        contact=request.POST.get('contact')
+        old_data=Book_data.objects.get(id=pk)
+        email=old_data.email
+        old_data.address=address
+        old_data.date=date
+        old_data.contact=contact
+        old_data.save()
+        alldata=Book_data.objects.filter(email=email) 
+
+        admindata=Userdata.objects.get(email=email)
+        fname=admindata.fname
+        lname=admindata.lname
+        email=admindata.email
+        password=admindata.password
+        user={
+            'fnm':fname,
+            'lnm':lname,
+            'em':email,
+            'pass':password
+            }
+        return render(request,'datadisplay.html',{'data':alldata,'user':user})
+
+

@@ -36,20 +36,20 @@
                   </div>
                 </div>
               </div>
-              <form action="{% url 'datadisplay' %}">
+              <form action="{% url 'datadisplay' %}" method="post">
                 {% csrf_token %}
                 <div class="row gy-3 gy-md-4 overflow-hidden">
                   <div class="col-12">
                     <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" name="firstName" id="firstName" placeholder="First Name" value="{{user.fnm}}" readonly>
+                    <input type="email" class="form-control" name="fnm" id="firstName" placeholder="First Name" value="{{user.fnm}}" readonly>
                   </div>
                   <div class="col-12">
                     <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" name="lastName" id="lastName" placeholder="Last Name" value="{{user.lnm}}" readonly>
+                    <input type="email" class="form-control" name="lnm" id="lastName" placeholder="Last Name" value="{{user.lnm}}" readonly>
                   </div>
                   <div class="col-12">
                     <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" value="{{user.em}}" readonly>
+                    <input type="email" class="form-control" name="em" id="email" placeholder="name@example.com" value="{{user.em}}" readonly>
                   </div>
                   <div class="col-12">
                     <label for="password" class="form-label">Doctor Name <span class="text-danger">*</span></label>

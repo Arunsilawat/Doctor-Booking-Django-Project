@@ -37,8 +37,8 @@
 
 <body><br><br>
     <div class="container">
-        <a href="{% url 'select' em=user.em %}"><button type="button" class="btn btn-primary" style="margin: 9px;">Home</button></a>
-        <a href="{% url 'home' %}"><button type="button" class="btn btn-primary">Logout</button></a>
+        <a href="{% url 'home' em=user.em %}"><button type="button" class="btn btn-primary" style="margin: 9px;">Home</button></a>
+        <a href="{% url 'login' %}"><button type="button" class="btn btn-primary">Logout</button></a>
     </div><br><br>
 
     <div class="container" style="background-color: white;border-radius: 10px;">
@@ -53,12 +53,12 @@
                         <th style="border: 2px solid black;">S No.</th>
                         <th style="border: 2px solid black;">Name</th>
                         <th style="border: 2px solid black;">Email</th>
-                        <th style="border: 2px solid black;">Car Info</th>
+                        <th style="border: 2px solid black;">Doctor Name</th>
                         <th style="border: 2px solid black;">Amount</th>
                         <th style="border: 2px solid black;">Address</th>
-                        <th style="border: 2px solid black;">Pick-Up Data & Time</th>
-                        <th style="border: 2px solid black;">Drop Data & Time</th>
-                        <th style="border: 2px solid black;">Feedback</th>
+                        <th style="border: 2px solid black;">Treatment</th>
+                        <th style="border: 2px solid black;">Contact</th>
+                        <th style="border: 2px solid black;">Date & Time</th>
                         <th style="border: 2px solid black;">Update</th>
                         <th style="border: 2px solid black;">Update</th>
                     </tr>
@@ -69,12 +69,12 @@
                         <td style="border: 2px solid black;">{{forloop.counter}}</td>
                         <td style="border: 2px solid black;">{{i.fname}} {{i.lname}}</td>
                         <td style="border: 2px solid black;">{{i.email}}</td>
-                        <td style="border: 2px solid black;">{{i.carnm}}</td>
+                        <td style="border: 2px solid black;">{{i.doctor}}</td>
                         <td style="border: 2px solid black;">{{i.amount}}</td>
                         <td style="border: 2px solid black;">{{i.address}}</td>
-                        <td style="border: 2px solid black;">{{i.pick}}</td>
-                        <td style="border: 2px solid black;">{{i.drop}}</td>
-                        <td style="border: 2px solid black;">{{i.feedback}}</td>
+                        <td style="border: 2px solid black;">{{i.treat}}</td>
+                        <td style="border: 2px solid black;">{{i.contact}}</td>
+                        <td style="border: 2px solid black;">{{i.date}}</td>
                         <td style="border: 2px solid black;"><a href="{% url 'delete' pk=i.id em=i.email %}"><button
                                     class="btn btn-danger">Delete</button></a></td>
                         <td style="border: 2px solid black;"><a href="{% url 'edit' pk=i.id %} "><button
@@ -92,19 +92,16 @@
         {% csrf_token %}
         <div data-mdb-input-init class="form-outline mb-4">
             <label class="form-label" for="form1Example1">Address</label>
-            <input type="text" id="form1Example1" class="form-control" name="add" value="{{key2.add}}" style="height: 45px;" />
+            <input type="text" id="form1Example1" class="form-control" name="address" value="{{key2.address}}" style="height: 45px;" />
         </div>
         <div data-mdb-input-init class="form-outline mb-4">
-            <label class="form-label" for="form1Example2">Pick-Up Date & Time</label>
-            <input type="datetime-local" id="form1Example2" class="form-control" name="pick" value="{{key2.pick}}" style="height: 45px;" />
+            <label class="form-label" for="form1Example2">Treatment Date & Time</label>
+            <input type="datetime-local" id="form1Example2" class="form-control" name="date" value="{{key2.date}}" style="height: 45px;" />
         </div>
+       
         <div data-mdb-input-init class="form-outline mb-4">
-            <label class="form-label" for="form1Example1">Drop Date & Time</label>
-            <input type="datetime-local" id="form1Example1" class="form-control" name="drop" value="{{key2.drop}}" style="height: 45px;"/>
-        </div>
-        <div data-mdb-input-init class="form-outline mb-4">
-            <label class="form-label" for="form1Example2">Feedback</label>
-            <input type="text" id="form1Example2" class="form-control" name="feed" value="{{key2.feed}}" style="height: 45px;" />
+            <label class="form-label" for="form1Example2">Contact</label>
+            <input type="text" id="form1Example2" class="form-control" name="contact" value="{{key2.contact}}" style="height: 45px;" />
         </div><br>
         <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Save</button>
     </form><br><br>
