@@ -199,3 +199,34 @@ def save(request,pk):
         return render(request,'datadisplay.html',{'data':alldata,'user':user})
 
 
+def showdata(request,em):
+    email=em 
+    getdata=Book_data.objects.filter(email=em)
+    if getdata:
+        data=Book_data.objects.filter(email=em)
+        admindata=Userdata.objects.get(email=em)
+        fname=admindata.fname
+        lname=admindata.lname
+        email=admindata.email
+        password=admindata.password
+        user={
+            'fnm':fname,
+            'lnm':lname,
+            'em':email,
+            'pass':password
+            }
+        return render(request,'datadisplay.html',{'data':data,'user':user})
+    else:
+        msg='Data Not Found' 
+        admindata=Userdata.objects.get(email=em)
+        fname=admindata.fname
+        lname=admindata.lname
+        email=admindata.email
+        password=admindata.password
+        user={
+            'fnm':fname,
+            'lnm':lname,
+            'em':email,
+            'pass':password
+            }
+        return render(request,'datadisplay.html',{'msg':msg,'user':user})
